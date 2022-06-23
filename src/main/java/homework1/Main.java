@@ -18,27 +18,45 @@ public class Main {
 
 
     public static void main(String[] args) {
+        //участники
         Cat cat = new Cat("Мурка", 100, 5);
         Human human = new Human("Адам", 500, 2);
         Robot robot = new Robot("Бендер", 1000, 1);
 
+        //препятствия
         Treadmill treadmill1 = new Treadmill(200);
         Treadmill treadmill2 = new Treadmill(500);
         Wall wall1 = new Wall(1);
         Wall wall2 = new Wall(2);
 
-        Motion[] motions = {cat, human, robot};
-        Obstacle[] obstacles = {treadmill1,  treadmill2, wall1, wall2};
-        for (Motion m : motions) {
-            for(Obstacle o : obstacles) {
-                if(o.isOvercome(m)) {
-                    System.out.println("Препятствие пройдено");
+        //массивы участников и препятствий
+        Participant[] participants = {cat, human, robot};
+        Obstacle[] obstacles = {treadmill1, wall1, treadmill2, wall2};
+
+        //прохождение участниками препятствий
+        int numberParticipant = 1;
+
+        for (Participant p : participants) {
+            System.out.printf("\nУчастник по имени %s и номером %d начал проходить полосу препятствий!\n",
+                    p.nameParticipant(), numberParticipant);
+            for (int i = 0; i < obstacles.length; i++) {
+                if(obstacles[i].isOvercome(p)) {
+                    System.out.println("Препятствие " + obstacles[i].nameObstacle() + " пройдено!");
+                    if(i == obstacles.length - 1) {
+                        System.out.println("Участник по имени " + p.nameParticipant() + " прошел полосу препятствий!" );
+                        System.out.println("______________________________________");
+                        break;
+                    }
                 }
                 else {
-                    System.out.println("Участник сошел с дистанции");
+                    System.out.printf("%s не прошел испытание - %s и поэтому выбывает с полосы препятствий☹\n",
+                            p.nameParticipant(), obstacles[i].nameObstacle());
+                    System.out.println("______________________________________");
                     break;
                 }
             }
+            numberParticipant++;
+
         }
 
 

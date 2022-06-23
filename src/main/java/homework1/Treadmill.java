@@ -8,9 +8,13 @@ public class Treadmill implements Obstacle{
         this.distance = distance;
     }
 
+    @Override
+    public String nameObstacle() {
+        return "беговая дорожка";
+    }
 
     @Override
-    public boolean isOvercome(Motion motion) {
-        return motion.run() >= distance;
+    public boolean isOvercome(Participant p) {
+        return p.run() >= distance;
     }
 }

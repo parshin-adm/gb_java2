@@ -1,10 +1,13 @@
 package homework1;
 
-public class Cat implements Motion {
+import java.util.Objects;
+
+public class Cat implements Participant {
 
     private String name;
     private int distance;
     private int height;
+
 
     public Cat(String name, int distance, int height) {
         this.name = name;
@@ -22,5 +25,10 @@ public class Cat implements Motion {
     public int jump() {
         System.out.println("Кот - " + name + " собирается прыгать");
         return height;
+    }
+
+    @Override
+    public String nameParticipant() {
+        return name;
     }
 }

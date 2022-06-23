@@ -8,9 +8,13 @@ public class Wall implements Obstacle{
         this.height = height;
     }
 
+    @Override
+    public String nameObstacle() {
+        return "стена";
+    }
 
     @Override
-    public boolean isOvercome(Motion motion) {
-        return motion.jump() >= height;
+    public boolean isOvercome(Participant p) {
+        return p.jump() >= height;
     }
 }

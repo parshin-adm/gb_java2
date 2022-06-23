@@ -1,6 +1,6 @@
 package homework1;
 
-public class Robot implements Motion{
+public class Robot implements Participant{
 
     private String name;
     private int distance;
@@ -22,5 +22,10 @@ public class Robot implements Motion{
     public int jump() {
         System.out.println("Робот - " + name + " собирается прыгать");
         return height;
+    }
+
+    @Override
+    public String nameParticipant() {
+        return name;
     }
 }
